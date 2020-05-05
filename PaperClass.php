@@ -122,7 +122,7 @@ class Paper
   
 	function getDescription() 
 	{
-		echo $this->description;
+		return $this->description;
 	}
 	
 	
@@ -182,7 +182,7 @@ class Paper
 
 //$a4=new Paper(0,"A4",0.4,0.2,"200x400","Matte");
 $a4=new Paper(0,"A4");
-$a4->getDescription();
+echo $a4->getDescription();
 echo "<br>";
 //echo $a4->getFinish();
 
