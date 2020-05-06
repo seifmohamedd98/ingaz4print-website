@@ -69,8 +69,8 @@ class Paper
 				
 			//Business Card 
 			case "Business Card":
-				$namePrice=0.05;
-				$size="3.5 x 2 inch";
+				$namePrice=0.5;
+				$this->size="3.5 x 2 inch";
 				break;
 		}
 		
@@ -88,7 +88,7 @@ class Paper
 				break;
 				
 			case "UV Gloss":
-				$namePrice=0.4;
+				$finishPrice=0.3;
 				break;
 		}
 		
@@ -100,7 +100,7 @@ class Paper
 		}
 		
 		
-		$this->description=$finish." ".$name." (".$this->size.") "."Static Weight gm";
+		$this->description=$side." ".$finish." ".$name." (".$this->size.") "."Static Weight gm";
 		$this->price = $sidePrice*($namePrice + $finishPrice);
 	}
 	
@@ -182,8 +182,12 @@ class Paper
 
 //$a4=new Paper(0,"A4",0.4,0.2,"200x400","Matte");
 $a4=new Paper(0,"A4");
-echo $a4->getDescription();
-echo "<br>";
+
+$flyerStandardPaper= new Paper(1,"Standard","Gloss");
+
+$businessCardPaper = new Paper(2,"Business Card","Matte");
+//echo $a4->getDescription();
+//echo "<br>";
 //echo $a4->getFinish();
 
 
