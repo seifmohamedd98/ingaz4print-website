@@ -10,20 +10,7 @@
 	{
 		$controller->{$_GET['action']}();
 	}
-// $userid=$_GET['id'];
-// echo $uname;
-// foreach($model->getUsers() as $user)
-// {
-//     if($user->getid() == $userid)
-//     {
-// 		$userid = $user->getid();
-// 		//$email = $user->getemail();
-// 		$username = $user ->getusername();
-// 		$password = $user->getpassword();
-//         $Fname = $user->getFname();
-// 		$Lname = $user->getLname();
-//     }
-// }
+
 ?>
 <html>
 	<head>

@@ -154,7 +154,7 @@ class client extends Model
           $_SESSION["password"]=$_POST["password"];
           $_SESSION["Fname"]=$_POST["Fname"];
           $_SESSION["Lname"]=$_POST["Lname"];
-          echo "Updated successfully.";
+          echo "<script>alert('Updated Successfully');</script>";
           //header("Location:C:\\xampp\\htdocs\\ingazclasses\\public\\editaccount.php");
         }
        else

@@ -33,7 +33,7 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 
 <body>
 	<!-------------------------------------------------------Start of Header---------------------------------------------------------------->
-    <?php include("C:\\xampp\\htdocs\\ingazclasses\\app\\view\\Viewbar.php"); ?>
+    <?php include("C:\\xampp\\htdocs\\newingaz\\app\\view\\Viewbar.php"); ?>
 
     <!-------------------------------------------------------End of Header------------------------------------------------------------------>
     

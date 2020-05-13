@@ -93,12 +93,12 @@ class Product extends Model
         $name_category=$_POST['name_category'];
 
 		$sql = "INSERT into  product(paper_type , description , price , name_category) Values('$paper_type','$description','$price','$name_category');";
-		echo $sql;
+		// echo $sql;
 		$dbh = new Dbh();
         if($dbh->query($sql) == true)
         {
            
-			echo "Product Added Successfully";
+			echo "<script>alert('Product Added Successfully');</script>";
 			//header("Location:AddProduct.php");
         }
 		else
@@ -121,7 +121,7 @@ class Product extends Model
 
 			if($dbh->query($sql) == true)
 			{
-			    echo "updated successfully.";
+                echo "<script>alert('Updated Successfully');</script>";
 			}
 			else
 			{
@@ -138,7 +138,7 @@ class Product extends Model
 		$result = $dbh->query($sql);
 		if($dbh->query($sql) === true)
 		{
-			echo "Product Deleted Successfully.";
+			echo "<script>alert('Product Deleted Successfully');</script>";
 		} 
 		else
 		{

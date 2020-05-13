@@ -156,7 +156,7 @@ class Message extends Model
             $result = $dbh->query($sql);
             if($result === true)
             {
-                echo "Send Successfully.";
+                echo "<script>alert('Send Successfully');</script>";
             } 
             else
             {
@@ -164,12 +164,13 @@ class Message extends Model
             }
         }
     }
-    static function sendmessageinternal($sender,$receiver,$receiver2,$subject,$message,$whosend)
+    static function sendmessageinternal($sender,$receiver,$subject,$message)
     {
         if($_SESSION['access']=='internal')
         {
+            // $id=$_POST['id'];
             $sender = $_SESSION['access'];
-            $receiver = 'test';
+            $receiver = $_POST['receiver'];
             $receiver2 = 'admin';
             $subject = $_POST['subject'];
             $message = $_POST['message'];
@@ -184,16 +185,10 @@ class Message extends Model
             // echo $message;
             // echo $sql;
             $dbh = new dbh();
-            //$result = $dbh->query($sql);
-      
-            $result2 = $dbh->query($sql2);	
-            $row2=$dbh->fetchRow($result2);
-            $whosend=$row2['sender'];
-            echo $whosend;
-
+            $result = $dbh->query($sql);
             if($result === true)
             {
-                echo "Send Successfully.";
+                echo "<script>alert('Send Successfully');</script>";
             } 
             else
             {
@@ -213,44 +208,12 @@ class Message extends Model
             $message->setid($row['id']);
             $message->setsender($row['sender']);
             $message->setreceiver($row['receiver']);
-            $message->setreceiver2($row['recevier2']);
+            $message->setreceiver2($row['receiver2']);
             $message->setsubject($row['subject']);
             $message->setmessage($row['message']);
             $messages[] = $message;
         }
             return $messages;
     }
-        // else if($_SESSION['UserType']='Admin')
-        // {
-        //     $sender = $_SESSION['Email'];
-        //     $receiver = $_POST['Receiver'];
-        //     $message = $_POST['Message'];
-        //     $sql="Insert Into Messages (sender,receiver,message) values('$sender', '$receiver','$message');";
-        //     $dbh = new dbh();
-        //     $result = $dbh->query($sql);
-        //     if($dbh->query($sql) === true)
-        //     {
-        //         echo "Send Successfully.";
-        //     } 
-        //     else
-        //     {
-        //         echo "ERROR: Could not able to execute $sql. " . $conn->error;
-        //     }
-        // }
-  
-    // static function delete($id)
-    // {
-        
-    //     $sql = "Delete * From Messages";
-    //     $dbh = new dbh();
-    //     $result = $dbh->query($sql);
-    //     if($dbh->query($sql) === true)
-    //     {
-    //         echo "Delete Successfully.";
-    //     } 
-    //     else
-    //     {
-    //         echo "ERROR: Could not able to execute $sql. " . $conn->error;
-    //     }
-    // }
+    
 }

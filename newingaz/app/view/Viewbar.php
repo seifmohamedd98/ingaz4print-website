@@ -125,13 +125,13 @@ if (version_compare(phpversion(), '5.4.0', '<')) {
 								if($_SESSION['access']=="admin" || $_SESSION['access']=="internal" )
 								{
 									echo "<li><a href='EditCategories.php'><span class='glyphicon glyphicon-th-list'></span> Edit Categories</a></li>";
-									echo "<li><a href='EditCategorySample.php'><span class='glyphicon glyphicon-th'></span> Edit Category Samples</a></li>";
+									echo "<li><a href='EditCategorySample.php'><span class='glyphicon glyphicon-th'></span> Add Category Samples</a></li>";
 								}
 							}
 						?>
 					</ul>
 				</li>
-				<li><a href='samples.php'>Samples</a></li>
+				<!-- <li><a href='samples.php'>Samples</a></li> -->
 				
 			</ul>
 
@@ -182,6 +182,7 @@ class Bar extends View1
 	public function InternalBar()
 	{
 		$str="";	
+		$str.='<li><a href="view_internalmessage.php"><span class="glyphicon glyphicon-cloud-download"></span> Review Message</a></li>';
 		$str.='<li><a href="#" class="dropdown" data-toggle="dropdown">Products <span class="glyphicon glyphicon-collapse-down"></span></a>';
 		$str.='<ul class="dropdown-menu">
 			   <li><a href="AddProduct.php">Add Product</a></li>
@@ -196,7 +197,7 @@ class Bar extends View1
 	public function userBar()
 	{
 		$str="";	
-        $str.='<li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Order History</a></li>';
+        // $str.='<li><a href="#"><span class="glyphicon glyphicon-calendar"></span> Order History</a></li>';
         $str.='<li><a href="editaccount.php?id='.$_SESSION['id'].'"><span class="glyphicon glyphicon-wrench"></span> Edit Account</a></li>';
         $str.='<li><a href="#" class="dropdown" data-toggle="dropdown"> <span class="glyphicon glyphicon-collapse-down"></span> More</a>';
         $str.='<ul class="dropdown-menu">

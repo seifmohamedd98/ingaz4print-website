@@ -7,12 +7,25 @@
 
   $model = new Message();
   $controller = new MessageController($model);
-  $view = new ViewTable($controller, $model);
 
-  if (isset($_GET['action']) && !empty($_GET['action']))
-  {
-      $controller->{$_GET['action']}();
-  }
+
+
+$id=$_GET['id'];
+foreach($model->showmessages() as $messages)
+{
+    if($messages->getid() == $id)
+    {
+        $id = $messages->getid();
+        $sender = $messages->getsender();
+        $subject = $messages->getsubject();
+        $message = $messages->getmessage();
+   }
+}
+
+if (isset($_GET['action']) && !empty($_GET['action']))
+{
+    $controller->{$_GET['action']}();
+}
 ?>
 <!DOCTYPE HTML>
 
@@ -70,47 +83,32 @@
 
     <!-------------------------------------------------------Start of Content--------------------------------------------------------------->
             <h1 class="jumbotron"> Write Your Message </h1>
-            <form action="send_internalmessage.php?action=internalsendMessage" method="post">
-
-            <!-- <table width='80%' class="table table-hover" id="table">
-                <?php
-                        // $details=$_GET['id'];
-                        
-                        // foreach($this->model->showmessages() as $message)
-                        // {
-                        //     if($message->getid() == $details)
-                        //     {
-                        //         $getid = $message->getid();
-                        //         $getsender = $message ->getsender();
-                        //         $getsubject = $message->getsubject();
-                        //         $getmessage= $message->getmessage();
-                        //     }
-                        // }
-                ?>
-            </table> -->
-
+            <form action="view_internalmessage.php?action=internalsendMessage" method="post">
                 <div class="form-group">      
-                    <!-- <table>
+                    <table>
+                        <tr>
+                        <th scope="row">Message ID</th>
+                        <td colspan='2'><input type='' value="<?php echo $id; ?>"  style='border:none; background:none; width:100%;' readonly></td>
+                        </tr>  
+
+
                         <tr>
                         <th scope="row">Sender</th>
-                         <td colspan='2'><input type='' value="<?php //echo $getsender; ?>" name='sender' style='border:none; background:none; width:100%;' readonly></td>
+                         <td colspan='2'><input type='' value="<?php echo $sender; ?>" name='receiver' style='border:none; background:none; width:100%;' readonly></td>
                         </tr>  
                         <tr>
                             <th scope="row">Subject</th>
-                            <td colspan="2"></td>
+                            <td colspan='2'><input type='' value="<?php echo $subject; ?>" style='border:none; background:none; width:100%;' readonly></td>
                         </tr>
                         <tr>
                             <th scope="row">Message</th>
-                            <td colspan="2"> </td>
+                            <td colspan='2'><input type='' value="<?php echo $message; ?>"  style='border:none; background:none; width:100%;' readonly></td>
                         </tr>  
-                    </table>   -->
+                    </table>  
 
                     <br>
                     <input type="text" class="form-control" placeholder="SUBJECT" name="subject">
                     <br>
-                    <input name="id" value="<?php echo $id;?>"  hidden />
-                    <input name="receiver" value="<?php echo $receiver;?>"  hidden />
-                    <input name="receiver2" value="<?php echo $receiver2;?>"  hidden />
                     <br>
                     <br>
                     <textarea  class="form-control" placeholder="YOUR MESSAGE" name="message"></textarea>

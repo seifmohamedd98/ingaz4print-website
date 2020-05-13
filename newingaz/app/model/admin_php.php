@@ -12,6 +12,7 @@ class admin extends Model
         $email2=$_POST['email'];
         $username2=$_POST['username'];
         $password2=$_POST['password'];
+        // $password2=password_hash($_POST['password'], PASSWORD_BCRYPT);
         $Fname2=$_POST['Fname'];;
         $Lname2=$_POST['Lname'];
         $birthday2=$_POST['bday'];
@@ -42,7 +43,7 @@ class admin extends Model
         if($dbh3->query($sql2) == true)
         {
             // header("Location:CreateAccount.php");
-            echo" Created Account successfully";
+            // echo" Created Account successfully";
         }
     }
 

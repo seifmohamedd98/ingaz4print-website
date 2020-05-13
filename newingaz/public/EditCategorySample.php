@@ -20,7 +20,7 @@
 
 <html>
 	<head>
-		<title>Edit Category Samples | INAGZ</title>
+		<title>Add Category Samples | INAGZ</title>
 		
 		<link rel = "icon" href ="images/logo2.jpg" type = "image/x-icon"> 
 		<meta charset="UTF-8">
@@ -37,7 +37,7 @@
 	<body>
 		<!-------------------------------------------------------Start of Content--------------------------------------------------------------->			
 		<div class="container">
-			<h1><b>Edit Category Samples :-</b></h1>
+			<h1><b>Add Category Samples :-</b></h1>
 			<?php
 				//Views Category form
 				require_once(__ROOT__ . "view/ViewCategory.php"); 

@@ -3,11 +3,9 @@
 define('__ROOT__', "../app/");
 require_once(__ROOT__ . "model/messages_php.php");
 require_once(__ROOT__ . "controller/MessagesController.php");
-require_once(__ROOT__ . "view/ViewMessages.php");
 
 $model = new Message();
 $controller = new MessageController($model);
-$view = new ViewTable($controller, $model);
 
 if (isset($_GET['action']) && !empty($_GET['action'])) 
 {
@@ -47,6 +45,7 @@ if (isset($_GET['action']) && !empty($_GET['action']))
         <table width='80%' class="table table-hover" id="table">
                 <thead> <!-- deh 3ashan may3mlsh hover 3alehom -->
                     <tr class="info">   
+                        <th>Message ID</th> 
                         <th>Sender</th>
                         <th>Subject</th>
                         <th>Message</th>
@@ -59,10 +58,11 @@ if (isset($_GET['action']) && !empty($_GET['action']))
                     foreach($table as $message)
                     {
                         echo "<tr>";
+                        echo '<td>'.$message->getid()    ."</td>";
                         echo "<td>".$message->getsender() ."</td>";
                         echo "<td>".$message->getsubject()."</td>";
                         echo "<td>".$message->getmessage()."</td>";
-                        echo "<td><a href='send_internalmessage.php?id=".$message->getid()."'><input type='button' value='Replay'></a></td>";
+                        echo '<td><a href="send_internalmessage.php?id='.$message->getid().'"><input type="button" value="Replay"></a></td>';
                         echo"</tr>";
                     }
                 ?>

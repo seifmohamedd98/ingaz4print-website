@@ -1,11 +1,6 @@
 <?php 
 	define('__ROOT__', "../app/");
 	
-	// require_once(__ROOT__ . "model/User_php.php");
-	// require_once(__ROOT__ . "controller/UserController.php");
-	// $model = new User();
-	// $controller = new UserController($model);
-	
 	require_once(__ROOT__ . "model/Categories.php");
 	require_once(__ROOT__ . "controller/CategoriesController.php");
 

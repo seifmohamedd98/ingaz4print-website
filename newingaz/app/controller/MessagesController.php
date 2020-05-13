@@ -16,17 +16,14 @@ class MessageController extends Controller
     }
     public function internalsendMessage() 
     {
+        
         $sender = $_SESSION['access'];
         $receiver = $_REQUEST['receiver'];
-        $receiver2 = $_REQUEST['receiver2'];
+        // $receiver2 = $_REQUEST['receiver2'];
         $subject = $_REQUEST['subject'];
         $message = $_REQUEST['message'];
-        $whosend= $_REQUEST['sender'];
-        $this->model->sendmessageinternal($sender,$receiver,$receiver2,$subject,$message,$whosend);
+        // $whosend= $_REQUEST['sender'];
+        $this->model->sendmessageinternal($sender,$receiver,$subject,$message);
     }
-    // public function DeleteMessage()
-    // {
-    //     $id = $_POST['ID'];
-    //     $this->model->delete($id);
-    // }
+
 }

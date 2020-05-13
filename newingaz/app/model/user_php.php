@@ -97,6 +97,7 @@ class user extends Model
     
         $username = $_POST["username"];
         $password = $_POST["password"];
+        // $password=password_hash($_POST['password'], PASSWORD_BCRYPT);
 
         $sql="Select * from users where username ='$username' and password='$password'";
 
@@ -122,12 +123,13 @@ class user extends Model
                 $_SESSION['access']='user';
             }
             
-             echo "login successfully";
-         }
+            echo "<script>alert('Login Successfully');</script>";
+
+          }
 
         else
         {
-           echo "Invalid Email or Password";
+          echo "<script>alert('Invailed Email or Password');</script>";
         }
 
         $_SESSION['id']=$row['id'];
@@ -138,13 +140,13 @@ class user extends Model
         $_SESSION['Lname']=$row['Lname'];
         $_SESSION['birthday']=$row['bday'];
         $_SESSION['gender']=$row['gender'];
-        echo"<pre>";
-        print_r($sql);
-        echo"</pre>";
+        // echo"<pre>";
+        // print_r($sql);
+        // echo"</pre>";
 
-        echo"<pre>";
-        print_r($row);
-        echo"</pre>";
+        // echo"<pre>";
+        // print_r($row);
+        // echo"</pre>";
         
     }
 
@@ -185,12 +187,9 @@ class user extends Model
         if($dbh->query($sql) == true)
         {
             // header("Location:CreateAccount.php");
-            echo" Signup successfully";
+            echo "<script>alert('Signup Successfully');</script>";
         }
-        // else
-        // {
-        //  echo "ERROR: Could not able to execute $sql. " . $conn->error;
-        // }
+
     }
 
     function deleteuser($id)
@@ -200,7 +199,7 @@ class user extends Model
       $result = $dbh->query($sql);
       if($dbh->query($sql) === true)
       {
-        echo "Deleted Successfully.";
+        echo "<script>alert('Deleted Successfully');</script>";
       } 
       else
       {
@@ -216,7 +215,7 @@ class user extends Model
       $result = $dbh->query($sql);
       if($dbh->query($sql) === true)
       {
-        echo "Deleted Successfully.";
+        echo "<script>alert('Deleted Successfully');</script>";
       } 
       else
       {
