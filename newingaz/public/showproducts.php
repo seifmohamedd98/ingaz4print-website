@@ -1,4 +1,5 @@
 <?php
+session_start();
   define('__ROOT__', "../app/");
   require_once(__ROOT__ . "model/Product.php");
   require_once(__ROOT__ . "controller/ProductController.php");

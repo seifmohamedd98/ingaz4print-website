@@ -1,4 +1,5 @@
 <?php
+session_start();
   define('__ROOT__', "../app/");
   require_once(__ROOT__ . "model/Product.php");
   require_once(__ROOT__ . "controller/ProductController.php");
@@ -38,7 +39,9 @@ foreach($model->getproducts() as $product)
 </head>
 <body>
 <!-------------------------------------------------------Start of Header---------------------------------------------------------------->
-<?php include("C:\\xampp\\htdocs\\newingaz\\app\\view\\Viewbar.php"); ?>
+<?php //include("C:\\xampp\\htdocs\\newingaz\\app\\view\\Viewbar.php"); 
+require_once(__ROOT__ . "view/Viewbar.php");
+?>
 
 <!-------------------------------------------------------End of Header------------------------------------------------------------------>
 

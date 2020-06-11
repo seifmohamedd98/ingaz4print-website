@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 define('__ROOT__', "../app/");
 require_once(__ROOT__ . "model/messages_php.php");
 require_once(__ROOT__ . "controller/MessagesController.php");

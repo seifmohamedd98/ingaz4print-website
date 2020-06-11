@@ -5,12 +5,56 @@ require_once(__ROOT__ . "model/user_php.php");
 require_once(__ROOT__ . "model/client_php.php");
 require_once(__ROOT__ . "controller/UserController.php");
 require_once(__ROOT__ . "controller/ClientController.php");
+
+
+//$date = date('Format String', time());
+
+//date_timestamp_get($date);
+
+//$date=new DateTime();
+
+//echo $date->getTimestamp();
+
+
+
+
+
 $model = new User();
+echo $model->getusername();
 // $model2 = new client();
 $controller = new UserController($model);
 // $controller2  = new ControllerClient($model2);
 
-  
+
+//phpinfo();
+
+
+
+require_once(__ROOT__ . "model/ProductModel.php");
+require_once(__ROOT__ . "model/Paper.php");
+/*
+$paper=new Paper("A5 (210 x 148 mm)","Matte","Single","135 gsm");
+$product = new ProductModel(0, "Flyer",$paper,100,200);
+
+if($paper == null)
+{
+	echo "<h1>Paper is null</h1>";
+}
+if($product == null)
+{
+	echo "<h1>Product is null</h1>";
+}
+if($model->getCart() == null)
+{
+	echo "<h1>Cart is null</h1>";
+}
+
+$paper->setPrice(0);
+$product->setPrice(0);
+$product->setTotalPrice(0);
+
+$model->addToCart($product);
+*/
 
 if (isset($_GET['action']) && !empty($_GET['action'])) 
 {
@@ -20,6 +64,7 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 // {
 //   $controller2->{$_GET['action']}();
 // }
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -74,6 +119,17 @@ if (isset($_GET['action']) && !empty($_GET['action']))
             filter: blur(5px);
             width:100%;
         }   
+        .item
+        {
+            display:none;
+            height:600px;
+            filter: blur(5px);
+            width:100%;
+        }
+        .img-responsive
+        {
+            max-height:220px;
+        }
       </style>
     </head>
     
@@ -89,13 +145,21 @@ if (isset($_GET['action']) && !empty($_GET['action']))
         <div class="slider">
             <div class="welcomediv">Welcome TO INGAZ 4 Print</div>
             <p class="welcome_p">Online Printing Service</p>
-            <img class="mySlides" src="images/1.jpg">
+
+            <!-- <img class="mySlides" src="images/1.jpg">
             <img class="mySlides" src="images/2.jpg">
-            <img class="mySlides" src="images/3.jpg">
+            <img class="mySlides" src="images/3.jpg"> -->
+
+            <div class="carousel-inner">
+                <img src="images/1.jpg" alt="Flyer" class="item">
+                <img src="images/2.jpg" alt="Notebook" class="item" >
+                <img src="images/3.jpg" alt="Bussines Card"  class="item">
+            </div>
+
         </div>
     </div>
 
-    <script>
+    <!-- <script>
     var myIndex = 0;
     carousel();
     function carousel()
@@ -114,6 +178,26 @@ if (isset($_GET['action']) && !empty($_GET['action']))
         setTimeout(carousel, 2000);
 
     }
+    </script> -->
+    <script>
+        var myIndex = 0;
+        carousel();
+        function carousel()
+        {
+        var i;
+        var x = document.getElementsByClassName("item");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length)
+        {
+            myIndex = 1
+        }
+        x[myIndex-1].style.display = "block";
+        setTimeout(carousel, 2000);
+
+        }
     </script>
 <!-------------------------------------------------------End of SlideShow---------------------------------------------------------->
 
@@ -122,25 +206,25 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 
                     <div class="col-sm-4">
                         <div class="panel panel-warning">
-                            <div class="panel-heading">New</div>
-                            <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                            <div class="panel-footer">Flyer</div>
+                            <div class="panel-heading">Fyer</div>
+                            <div class="panel-body"><img src="images/flyer1.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                            <div class="panel-footer">Normal Flyer Design</div>
                         </div>
                     </div>
 
                     <div class="col-sm-4"> 
                         <div class="panel panel-warning">
-                            <div class="panel-heading">New</div>
-                            <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                            <div class="panel-footer">Flyer</div>
+                            <div class="panel-heading">Notebook</div>
+                            <div class="panel-body"><img src="images/notebook2.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                            <div class="panel-footer">WATCHING YOU Notebook Design</div>
                         </div>
                     </div>
 
                     <div class="col-sm-4"> 
                         <div class="panel panel-warning">
-                            <div class="panel-heading">New</div>
-                            <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                            <div class="panel-footer">Flyer</div>
+                            <div class="panel-heading">Business Card</div>
+                            <div class="panel-body"><img src="images/business3.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                            <div class="panel-footer">Business Card for XEE Media</div>
                         </div>
                     </div>
 
@@ -154,34 +238,44 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 
                     <div class="col-sm-4">
                         <div class="panel panel-warning">
-                            <div class="panel-heading">New</div>
-                            <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                            <div class="panel-footer">Notebook</div>
+                            <div class="panel-heading">Business Card</div>
+                            <div class="panel-body"><img src="images/business2.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                            <div class="panel-footer">Business Card Design</div>
                         </div>
                     </div>
 
                     <div class="col-sm-4"> 
                         <div class="panel panel-warning">
-                            <div class="panel-heading">New</div>
-                            <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                            <div class="panel-footer">Business Card</div>
+                            <div class="panel-heading">Flyer</div>
+                            <div class="panel-body"><img src="images/flyer3.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                            <div class="panel-footer">Flyer Design for a travel company</div>
                         </div>
                     </div>
 
                     <div class="col-sm-4"> 
                         <div class="panel panel-warning">
-                            <div class="panel-heading">New</div>
-                            <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                            <div class="panel-footer">Business Card</div>
+                            <div class="panel-heading">Notebook</div>
+                            <div class="panel-body"><img src="images/notebook5.jpg" class="img-responsive" style="width:100%" alt="Image"></div>
+                            <div class="panel-footer">Blue Cover Notebook Design</div>
                         </div>
                     </div>
 
                 </div>
-                <?php include "feedback.php";?>
+
+                <?php 
+				if(isset($_SESSION['access']))
+				{
+					if ($_SESSION['access']=="user")
+					{
+						include "feedback.php";
+					}
+				}
+                ?>
             </div>
 
             <br><br>
         <!-----------------------------------------------------Start of Footer------------------------------------------------------------->
+        
             <?php include "footer.php";?>
         <!------------------------------------------------------End of Footer-------------------------------------------------------------->
     </body>

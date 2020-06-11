@@ -1,4 +1,5 @@
 <?php
+session_start();
   define('__ROOT__', "../app/");
   require_once(__ROOT__ . "model/messages_php.php");
   require_once(__ROOT__ . "controller/MessagesController.php");
@@ -78,7 +79,8 @@ if (isset($_GET['action']) && !empty($_GET['action']))
     
     <body>		
     <!-------------------------------------------------------Start of Header---------------------------------------------------------------->
-    <?php include("C:\\xampp\\htdocs\\newingaz\\app\\view\\Viewbar.php");?>
+    <?php //include("C:\\xampp\\htdocs\\newingaz\\app\\view\\Viewbar.php");
+	require_once(__ROOT__ . "view/Viewbar.php");?>
     <!-------------------------------------------------------End of Header------------------------------------------------------------------>
 
     <!-------------------------------------------------------Start of Content--------------------------------------------------------------->
@@ -115,7 +117,7 @@ if (isset($_GET['action']) && !empty($_GET['action']))
                     <br>
                     <br>
                     <br>
-                    <button class="btn btn-primary"  name="send" ><b> REPLAY </b></button>
+                    <button class="btn btn-primary"  name="send" ><b> REPLY </b></button>
                 </div>
 
             </form>

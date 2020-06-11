@@ -1,4 +1,5 @@
 <?php 
+
 //define('__ROOT__', "../app/");
 //require_once("C:\\xampp\\htdocs\\ingazclasses\\app\\model\\user_php.php");
 //require_once("C:\\xampp\\htdocs\\ingazclasses\\app\\controller\\UserController.php");
@@ -11,7 +12,6 @@ require_once(__ROOT__ . "controller\UserController.php");
 $model = new user();
 $controller = new UserController($model);
 ?>
-
 <li>
             <a href='#' onclick="document.getElementById('id01').style.display='block'"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 
@@ -31,12 +31,13 @@ $controller = new UserController($model);
                             <input type="password" class="w3-input w3-border" id="pwd" placeholder="Enter password" name="password" required ><br>
 
                             <button type="submit" class="w3-button w3-block w3-section w3-padding" style="background-color:#ffc60b; color:black; font-size:20px;" name="submitlog">Login</button>
-
+                            <h4><a href="enter_email.php" style="color:black">Forgot your password?</a></h4>
                         </div>
                     </form>
+                    <!-- <a href = "enter_email.php"><button type="submit" class="w3-button w3-block w3-section w3-padding" style="background-color:#ffc60b; color:black; font-size:20px;" name="submitlog">Reset Password</button></a> -->
 
                     <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
-
+                    
                     <input type="button" value="Cancel" onclick="document.getElementById('id01').style.display='none'" class="btn" style="background-color:black; color:#ffc60b;">
                     </div>
 

@@ -1,9 +1,10 @@
 <?php
-//session_start();
+session_start();
 define('__ROOT__', "../app/");
 require_once(__ROOT__ . "model/messages_php.php");
 require_once(__ROOT__ . "controller/MessagesController.php");
 require_once(__ROOT__ . "view/ViewMessages.php");
+
 
 $model = new Message();
 $controller = new MessageController($model);
@@ -27,8 +28,7 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>    
         
     </head>
     
@@ -43,7 +43,6 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 
         <!-------------------------------------------------------Start of Content--------------------------------------------------------------->
         <h1 class="jumbotron">Messages Review</h1>
-      
         <table width='80%' class="table table-hover" id="table">
                 <thead> <!-- deh 3ashan may3mlsh hover 3alehom -->
                     <tr class="info">   
@@ -66,7 +65,7 @@ if (isset($_GET['action']) && !empty($_GET['action']))
                         echo"</tr>";
                     }
                 ?>
-        </table>    
+        </table>   
         <br><br>
         <!-------------------------------------------------------End of Content----------------------------------------------------------------->
 

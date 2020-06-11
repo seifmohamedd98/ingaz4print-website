@@ -1,5 +1,5 @@
 <?php
-// session_start();
+session_start();
 // $servername = "localhost";
 // $username = "root";
 // $password = "";
@@ -184,7 +184,61 @@ if (isset($_GET['action']) && !empty($_GET['action']))
                     
                     <br>
                     <label><b>Password</b></label>
-                    <input type="password" name="password" placeholder="Password" class="form-control" required >
+                    <input type="password" name="password" placeholder="Password" class="form-control" id="password" required >
+                    Show Password <input type="checkbox" onclick="myFunction()"> 
+                    <!-- Start of Show Password -->
+                    <script>
+                        function myFunction() 
+                        {
+                            var x = document.getElementById("password");
+                            if (x.type === "password")
+                            {
+                                x.type = "text";
+                            } 
+                            else 
+                            {
+                                x.type = "password";
+                            }
+                        }
+                    </script>
+                    <!-- End of Show Password -->
+                    
+                    <br>
+                    <label><b>Confirm Password</b></label>
+                    <input type="password" name="confirmpassword" placeholder="Confirm Password" class="form-control" id="confirmpassword" required >
+                    Show Password <input type="checkbox" onclick="myFunction2()"> 
+
+                    <!-- Start of Validation of confirm password & show confirm password-->
+                    <script>
+                        var password = document.getElementById("password"); 
+                        var confirmpassword = document.getElementById("confirmpassword");
+                        function validatePassword()
+                        {
+                            if(password.value != confirmpassword.value) 
+                            {
+                                confirmpassword.setCustomValidity("Passwords Don't Match");
+                            } 
+                            else
+                            {
+                                confirmpassword.setCustomValidity('');
+                            }
+                        }
+                        password.onchange = validatePassword;
+                        confirmpassword.onkeyup = validatePassword;
+                        function myFunction2() 
+                        {
+                            var x = document.getElementById("confirmpassword");
+                            if (x.type === "password")
+                            {
+                                x.type = "text";
+                            } 
+                            else 
+                            {
+                                x.type = "password";
+                            }
+                        }
+                    </script>
+                    <!-- End of Validation of confirm password & show confirm password -->
 
                     <br>
                     <label><b>First Name</b></label>
@@ -193,6 +247,31 @@ if (isset($_GET['action']) && !empty($_GET['action']))
                     <br>
                     <label><b>Last Name</b></label>
                     <input type="text" name="Lname" placeholder="Last Name" class="form-control" required >
+                    
+                    <br>
+                    <label><b>Address</b></label>
+                    <input type="text" name="address" placeholder="Address" class="form-control" required >
+
+                    <br>
+                    <label><b>Mobile Number</b></label>
+                    <input type="text" name="mobile" placeholder="Example 01234567899 Must Contain 11 number" class="form-control" id="phonefield" onkeyup="return validatephone(this.value);" required >  
+                    <script>
+                    function validatephone(mobile)
+                        {
+                            mobile = mobile.replace(/[^0-9]/g,'');
+                            $("#phonefield").val(mobile);
+                            if( mobile == '' || !mobile.match(/^0[0-9]{10}$/) )
+                            {
+                                $("#phonefield").css({'background':'#FFEDEF' , 'border':'solid 1px red'});
+                                return false;
+                            }
+                            else
+                            {
+                                $("#phonefield").css({'background':'#99FF99' , 'border':'solid 1px #99FF99'});
+                                return true;	
+                            }
+                        }
+                    </script>
                     
                     <br>
                     <label><b>Birthday</b></label>

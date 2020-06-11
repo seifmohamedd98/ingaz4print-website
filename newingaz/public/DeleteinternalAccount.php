@@ -1,4 +1,5 @@
 <?php
+session_start();
 define('__ROOT__', "../app/");
 require_once(__ROOT__ . "model/user_php.php");
 require_once(__ROOT__ . "controller/UserController.php");
@@ -33,7 +34,7 @@ if (isset($_GET['action']) && !empty($_GET['action']))
 
 <body>
 	<!-------------------------------------------------------Start of Header---------------------------------------------------------------->
-    <?php include("C:\\xampp\\htdocs\\newingaz\\app\\view\\Viewbar.php"); ?>
+    <?php require_once(__ROOT__ . "view/Viewbar.php"); ?>
 
     <!-------------------------------------------------------End of Header------------------------------------------------------------------>
     
@@ -43,7 +44,34 @@ if (isset($_GET['action']) && !empty($_GET['action']))
         
           <h1><b>Delete Account :-</b></h1>
           <hr> <br>
-
+          <script>
+            function getResult() 
+            {
+                debugger;
+                if($("#term").val() != '')
+                {
+            jQuery.ajax(
+            {
+                url: "backend-search.php",
+                data:'term='+$("#term").val(),
+                type: "POST",
+                success:function(data2)
+                {
+                    $("#result").html(data2);
+                    $("#result").show();
+                }
+            });
+                }
+                else{
+                    $("#result").hide();
+                }
+            }
+        </script>
+            <div class="nav" id="searchid">
+            <input type="search" placeholder="Search for internal account..." class="form-control" id="term" name="term" onkeyup="getResult()" />
+            </div>
+            <div id="result"></div>
+             
             <table width='80%' class="table table-hover">
                 <thead> <!-- deh 3ashan may3mlsh hover 3alehom -->
                     <tr class="info">   
@@ -51,9 +79,10 @@ if (isset($_GET['action']) && !empty($_GET['action']))
                         <th>Username</th>
                         <th>First Name</th>
                         <th>Last Name</th>
+                        <th>Address</th>
+                        <th>Mobile Number</th>
                         <th>Birthday</th>
-                        <th>Gender</th>
-                        <th>Account Type</th>
+                        <th>Gender</th>       
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -64,9 +93,13 @@ if (isset($_GET['action']) && !empty($_GET['action']))
                     echo "<tr>";
                     echo "<td>".$user->getemail()."</td>";
                     echo "<td>".$user->getusername()."</td>";
-                    echo "<td>".$user->getpassword()."</td>";
+                    
                     echo "<td>".$user->getFname()."</td>";
                     echo "<td>".$user->getLname()."</td>";
+
+                    echo "<td>".$user->getaddress()."</td>";
+                    echo "<td>".$user->getmobile()."</td>";
+
                     echo "<td>".$user->getbirthday()."</td>";
                     echo "<td>".$user->getgender()."</td>";
                     echo "<td><a href=\"DeleteinternalAccount.php?action=Deleteinternal&id=".$user->getid()."\" onClick=\"return confirm('Are you sure you want to delete this Account?')\">Delete</a></td>";		

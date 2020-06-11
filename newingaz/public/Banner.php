@@ -1,11 +1,30 @@
 <?php
+			session_start();
 			$_SESSION['category']='Banner';
 			define('__ROOT__', '../app/');		
 			require_once(__ROOT__ . 'model/User_php.php');
 			require_once(__ROOT__ . 'controller/UserController.php');
+			require_once(__ROOT__ . 'db\Dbh.php');
+			
+			require_once(__ROOT__ . 'model/Category.php');
+			require_once(__ROOT__ . 'model/Categories.php');
+			require_once(__ROOT__ . 'view/ViewCategory.php');
+			require_once(__ROOT__ . 'controller/CategoryController.php');
+			require_once(__ROOT__ . 'controller/CategoriesController.php');
+	
 			$model = new User();
 			$controller = new UserController($model);
+			
+			$categoriesModel=new Categories();
+			$categoryModel=$categoriesModel->getCategory($_SESSION['category']);
+			
+			$categoryController=new CategoryController($categoryModel);
+			$viewCategory=new ViewCategory($categoryController,$categoryModel);
 			require_once(__ROOT__ . 'view/Viewbar.php');
+			
+			$categoryController->delete();
+
+			
 
 		?>
 
@@ -31,7 +50,9 @@
 
 					<h1><b>Banner :-</b></h1>
 					<hr> <br>
-
+					<?php
+						echo $viewCategory->viewCategorySamples();
+					?>
 					
 
 				</div>

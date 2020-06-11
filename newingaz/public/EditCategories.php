@@ -1,4 +1,5 @@
 <?php 
+	session_start();
 	define('__ROOT__', "../app/");
 	
 	require_once(__ROOT__ . "model/User_php.php");
@@ -9,7 +10,7 @@
 	$model = new User();
 	$controller = new UserController($model);
 	require_once(__ROOT__ . "view/Viewbar.php");
-	
+
 	
 ?>
 
@@ -26,7 +27,9 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-		
+		<style>
+			.error {color: #FF0000;}
+		</style>
 	</head>
 
 	<body>
@@ -43,24 +46,46 @@
 				
 				echo $viewCategories->categoryForm();
 				
-				if(isset($_POST['addCategory']))
+				$categoryError = "";
+				$flag=true;
+								
+				if(isset($_POST['addCategory']) && isset($_POST['randcheck']))
 				{
-					echo"<b>";
-					$categoriesController->insert();
-					echo"</b>";
+					if(empty($_POST['categoryName']))
+					{
+						$categoryError = "* Category Name can't be empty when inserting new Category.";
+						$flag=false;
+					}
+					else if(is_numeric($_POST['categoryName']))
+					{
+						$categoryError = "* Category Name can't be empty when inserting new Category.";
+						$flag=false;
+					}
+					
+					if($flag==true)
+					{
+						echo"<b>";
+						$categoriesController->insert();
+						echo"</b>";
+					}
+					
 				}
-				else if(isset($_POST['editCategory']))
+				/*else if(isset($_POST['editCategory']) && isset($_POST['randcheck']))
 				{
-					echo"<b>";
-					$categoriesController->edit();
-					echo"</b>";
-				}
-				else if (isset($_POST['deleteCategory']))
+						echo"<b>";
+						$categoriesController->edit();
+						echo"</b>";
+				}*/
+				else if (isset($_POST['deleteCategory']) && isset($_POST['randcheck']))
 				{
-					echo"<b>";
-					$categoriesController->delete();
-					echo"</b>";
+						echo"<b>";
+						$categoriesController->delete();
+						echo"</b>";
 				}
+				
+				
+				
+				
 			?>
 			
 			<br><br>

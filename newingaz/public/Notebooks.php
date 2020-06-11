@@ -1,6 +1,6 @@
 <?php
 			session_start();
-			$_SESSION['category']='Notebook';
+			$_SESSION['category']='Notebooks';
 			define('__ROOT__', '../app/');		
 			require_once(__ROOT__ . 'model/User_php.php');
 			require_once(__ROOT__ . 'controller/UserController.php');
@@ -31,7 +31,7 @@
 
 		<html>
 			<head>
-				<title>Notebook | INAGZ</title>
+				<title>Notebooks | INAGZ</title>
 				<link rel = 'icon' href ='images/logo2.jpg' type = 'image/x-icon'> 
 				<meta charset='UTF-8'>
 				<meta name='viewport' content='width=device-width, initial-scale=1.0'>
@@ -48,7 +48,7 @@
 				<!-------------------------------------------------------Start of Content--------------------------------------------------------------->			
 				<div class='container'>
 
-					<h1><b>Notebook :-</b></h1>
+					<h1><b>Notebooks :-</b></h1>
 					<hr> <br>
 					<?php
 						echo $viewCategory->viewCategorySamples();

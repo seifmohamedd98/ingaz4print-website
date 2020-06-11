@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 define('__ROOT__', "../app/");
 require_once(__ROOT__ . "model/messages_php.php");
 require_once(__ROOT__ . "controller/MessagesController.php");
@@ -62,7 +62,7 @@ if (isset($_GET['action']) && !empty($_GET['action']))
                         echo "<td>".$message->getsender() ."</td>";
                         echo "<td>".$message->getsubject()."</td>";
                         echo "<td>".$message->getmessage()."</td>";
-                        echo '<td><a href="send_internalmessage.php?id='.$message->getid().'"><input type="button" value="Replay"></a></td>';
+                        echo '<td><a href="send_internalmessage.php?id='.$message->getid().'"><input type="button" value="Reply"></a></td>';
                         echo"</tr>";
                     }
                 ?>
